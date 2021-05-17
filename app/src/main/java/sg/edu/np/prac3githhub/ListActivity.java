@@ -1,17 +1,11 @@
 package sg.edu.np.prac3githhub;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -42,7 +36,7 @@ public class ListActivity extends AppCompatActivity {
             userList.add(randomUser);
         }
 
-        RecyclerView recyclerViewProfiles = findViewById(R.id.recyclerProfiles);
+        RecyclerView recyclerViewProfiles = findViewById(R.id.rv);
         ProfilesAdapter profilesAdapter = new ProfilesAdapter(userList);
         LinearLayoutManager pLayoutManager = new LinearLayoutManager(this);
         recyclerViewProfiles.setLayoutManager(pLayoutManager);

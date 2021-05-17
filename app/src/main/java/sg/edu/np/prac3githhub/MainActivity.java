@@ -2,7 +2,6 @@ package sg.edu.np.prac3githhub;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = findViewById(R.id.button);
+        Button button = findViewById(R.id.btnFollow);
 
         int posID = getIntent().getIntExtra("posID", 0);
         User user = ListActivity.userList.get(posID);

@@ -28,9 +28,14 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesViewHolder> {
 
     public void onBindViewHolder(ProfilesViewHolder holder, int position){
         User list_items = profiles_list.get(position);
-        holder.txt1.setText(list_items.name + list_items.id);
+        holder.txt1.setText(list_items.name);
         holder.txt2.setText(list_items.desc);
-        holder.image.setImageResource(R.mipmap.ic_launcher_round);
+
+        if(list_items.name.endsWith("7")){
+            holder.image2.setVisibility(View.VISIBLE);
+        } else{
+            holder.image2.setVisibility(View.GONE);
+        }
 
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +44,7 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesViewHolder> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
 
                 builder.setTitle("Profile");
-                builder.setMessage(list_items.name + list_items.id);
+                builder.setMessage(list_items.name);
                 builder.setCancelable(false);
                 builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -51,10 +56,9 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesViewHolder> {
 
                         dialog.cancel();
                         Bundle bundle = new Bundle();
-                        bundle.putInt("ID", list_items.getId());
+
+                        bundle.putInt("posID", position);
                         Intent intent = new Intent(view.getContext(), MainActivity.class);
-                        intent.putExtra("Name", list_items.getName()); // must put toString()
-                        intent.putExtra("Description", list_items.getDesc()); // must put toString()x
                         intent.putExtras(bundle);
                         view.getContext().startActivity(intent);
 
@@ -66,8 +70,8 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesViewHolder> {
 
             }
 
-
         });
+
     }
 
     public int getItemCount(){

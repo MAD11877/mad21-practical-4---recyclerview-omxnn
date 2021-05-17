@@ -20,18 +20,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        User user = new User(name, 0, desc, R.id.imageView2, false);
         Button button = findViewById(R.id.button);
 
-        Intent receivedData = getIntent();
-        user.name = receivedData.getStringExtra("Name");
-        user.desc = receivedData.getStringExtra("Description");
-        user.id = receivedData.getIntExtra("ID", 0);
+        int posID = getIntent().getIntExtra("posID", 0);
+        User user = ListActivity.userList.get(posID);
 
         TextView nameText = (TextView)findViewById(R.id.textView);
-        nameText.setText(user.name + user.id);
+        nameText.setText(user.getName());
         TextView descText = (TextView)findViewById(R.id.textView2);
-        descText.setText(user.desc);
+        descText.setText(user.getDesc());
 
         if (!user.isFollowed()) {
             button.setText("Follow");
@@ -55,10 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
               }
           }
-        }
-        );
-
-
+        });
     }
 
     @Override

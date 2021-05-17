@@ -18,27 +18,27 @@ import java.util.Random;
 
 public class ListActivity extends AppCompatActivity {
     private final static String TAG = "List Activity";
-    ArrayList<User> userList = new ArrayList<>();
+    static ArrayList<User> userList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        // #1
         for(int i = 0 ; i < 20 ; i++) {
             Random r = new Random();
-            int randomId = r.nextInt();
             int random = r.nextInt();
+            int random1 = r.nextInt();
             int random2 = r.nextInt();
-            String randomDesc = "Description " + random;
+            String randomName = "Name" + random;
+            String randomDesc = "Description " + random1;
             boolean randomBool;
             if (random2 % 2 == 0){
                 randomBool = false;
             } else{
                 randomBool = true;
             }
-            User randomUser = new User("Name", randomId, randomDesc, R.id.imageView2, randomBool);
+            User randomUser = new User(randomName, i, randomDesc, randomBool);
             userList.add(randomUser);
         }
 
